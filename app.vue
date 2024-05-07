@@ -11,16 +11,18 @@
 import Toaster from "@/components/ui/toast/Toaster.vue";
 import { fetchUser } from "@/lib/fetchUser";
 import { useAuthStore } from "@/store/auth";
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
 
 const { user, setUser } = useAuthStore();
 
 onMounted(async () => {
-  console.log("mounted");
   try {
     const userData = await fetchUser();
-    setUser(userData);
-    console.log("fetched", user);
+    if (userData) {
+      setUser(userData);
+    } else {
+      setUser(null);
+    }
   } catch (error) {
     console.error(error);
   }
