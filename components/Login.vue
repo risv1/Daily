@@ -1,11 +1,11 @@
 <template>
   <form
-    class="border-2 shadow-md hover:shadow-green-500 duration-200 ease-in-out border-green-500 rounded-lg bg-black bg-opacity-40 w-1/3 h-fit p-5 flex flex-col gap-7"
+    class="border-2 shadow-md hover:shadow-cyan-500 duration-200 ease-in-out border-cyan-500 rounded-lg bg-black bg-opacity-40 w-1/3 h-fit p-5 flex flex-col gap-7"
     @submit="onSubmit"
   >
-    <h1 class="text-green-500 text-3xl font-semibold self-center">Login</h1>
+    <h1 class="text-cyan-500 text-3xl font-semibold self-center">Login</h1>
     <div class="flex flex-col gap-2">
-      <label class="text-green-500 text-2xl font-normal">Email</label>
+      <label class="text-cyan-500 text-2xl font-normal">Email</label>
       <Input
         type="email"
         placeholder="Email"
@@ -14,7 +14,7 @@
       />
     </div>
     <div class="flex flex-col gap-2">
-      <label class="text-green-500 text-2xl font-normal">Password</label>
+      <label class="text-cyan-500 text-2xl font-normal">Password</label>
       <Input
         type="password"
         placeholder="Password"
@@ -25,12 +25,12 @@
     <Button
       type="submit"
       @click="onSubmit($event)"
-      class="bg-green-500 hover:bg-green-600 mt-auto"
+      class="bg-cyan-500 hover:bg-cyan-600 mt-auto"
       >Submit
     </Button>
     <p
       @click="switchLayer"
-      class="text-green-500 text-md font-medium hover:cursor-pointer self-center"
+      class="text-cyan-500 text-md font-medium hover:cursor-pointer self-center"
     >
       Don't have an account? Click to register!
     </p>
