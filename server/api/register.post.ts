@@ -1,12 +1,11 @@
 import { v4 as uuidv4 } from "uuid";
-import bcrypt from "bcrypt";
+import argon2 from "argon2";
 import { users } from "~/database/schema";
 import { db } from "~/database/db";
 import { User } from "~/models/users";
-import { set } from "zod";
 
 async function hashPassword(password: string) {
-  return await bcrypt.hash(password, 10);
+  return await argon2.hash(password);
 }
 
 export default defineEventHandler(async (event) => {
@@ -32,8 +31,7 @@ export default defineEventHandler(async (event) => {
       updated_at: created_at,
     };
 
-    const [user]: User[] = await db.insert(users).values({
-      ...body,
+    const user = await db.insert(users).values({
       id: data.id,
       name: data.name,
       email: data.email,
@@ -48,7 +46,8 @@ export default defineEventHandler(async (event) => {
       setResponseStatus(event, 500);
       return { message: "User not created."};
     }
-
+    console.log("User created successfully.");
+    
     setResponseStatus(event, 200)
     return { message: "User created successfully.", user: user };
   } catch (e: any) {

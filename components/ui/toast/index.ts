@@ -1,6 +1,4 @@
-import type { ToastRootProps } from 'radix-vue'
 import type { HTMLAttributes } from 'vue'
-
 export { default as Toaster } from './Toaster.vue'
 export { default as Toast } from './Toast.vue'
 export { default as ToastViewport } from './ToastViewport.vue'
@@ -31,7 +29,9 @@ export const toastVariants = cva(
 
 type ToastVariants = VariantProps<typeof toastVariants>
 
-export interface ToastProps extends ToastRootProps {
+export interface ToastProps {
+  defaultOpen?: boolean
+  forceMount?: boolean
   class?: HTMLAttributes['class']
   variant?: ToastVariants['variant']
   onOpenChange?: ((value: boolean) => void) | undefined

@@ -69,7 +69,7 @@ const onSubmit = async (event) => {
       password: password.value,
     });
     if (validatedData) {
-      const res = await fetch("http://localhost:3000/api/login", {
+      const res = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +96,7 @@ const onSubmit = async (event) => {
           title: "Success!",
           description: "User logged in successfully!",
         });
-        navigateTo("/");
+        navigateTo("/me");
       }
     } else {
       throw createError({

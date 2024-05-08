@@ -1,6 +1,6 @@
 export async function fetchUser() {
   try {
-    const res = await fetch("http://localhost:3000/api/session", {
+    const res = await fetch("/api/session", {
       method: "GET",
       credentials: "include",
       headers: {

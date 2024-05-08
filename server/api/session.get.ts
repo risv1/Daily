@@ -13,13 +13,13 @@ export default defineEventHandler(async (event) => {
     const token = getCookie(event, "token") as string;
     if (!token) {
       setResponseStatus(event, 401);
-      return { body: "Unauthorized" };
+      return { message: "Unauthorized" };
     }
 
     const data = jwt.verify(token, process.env.JWT_SECRET!) as UserPayload;
     if (!data) {
       setResponseStatus(event, 401);
-      return { body: "Unauthorized" };
+      return { message: "Unauthorized" };
     }
 
     setResponseStatus(event, 200);

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import argon2 from "argon2";
 import { users } from "~/database/schema";
 import { db } from "~/database/db";
 import { eq } from "drizzle-orm";
@@ -29,8 +29,11 @@ export default defineEventHandler(async (event) => {
       };
     }
 
-    const isValid = await bcrypt.compare(body.password, user.password);
+    const isValid = await argon2.verify(user.password, body.password)
     if (!isValid) {
+      console.log("Invalid password.");
+      console.log("User password", user.password);
+      console.log("Input password", body.password);
       setResponseStatus(event, 400);
       return {
         message: "Invalid password.",
