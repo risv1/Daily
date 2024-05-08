@@ -1,6 +1,6 @@
 <template>
   <form
-    class="border-2 shadow-md hover:shadow-cyan-500 duration-200 ease-in-out border-cyan-500 rounded-lg bg-black bg-opacity-40 w-1/3 h-fit p-5 flex flex-col gap-5"
+    class="border-2 shadow-md hover:shadow-cyan-500 duration-200 ease-in-out border-cyan-500 rounded-lg bg-indigo-950 bg-opacity-60 w-1/3 h-fit p-5 flex flex-col gap-5"
     @submit="onSubmit"
   >
     <h1 class="text-cyan-500 text-3xl font-semibold self-center">Sign up</h1>

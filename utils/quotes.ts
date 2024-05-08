@@ -1,0 +1,17 @@
+export const quotes = [
+    {id: 1, quote: "We cannot solve problems with the kind of thinking we employed when we came up with them.", by: "Albert Einstein"},
+    {id: 2, quote: "Stay away from those people who try to disparage your ambitions. Small minds will always do that, but great minds will give you a feeling that you can become great too.", by: "Mark Twain"},
+    {id: 3, quote: "When you change your thoughts, remember to also change your world.", by: "Norman Vincent Peale"},
+    {id: 4, quote: "Nature has given us all the pieces required to achieve exceptional wellness and health, but has left it to us to put these pieces together.", by: "Diane McLaren"},
+    {id: 5, quote: "Take care of your body. It’s the only place you have to live.", by: "Jim Rohn"},
+    {id: 6, quote: "The greatest discovery of any generation is that a human can alter his life by altering his attitude.", by: "William James"},
+    {id: 7, quote: "The only way to keep your health is to eat what you don’t want, drink what you don’t like, and do what you’d rather not.", by: "Mark Twain"},
+    {id: 8, quote: "Very little is needed to make a happy life.", by: "Marcus Aurelius"},
+    {id: 9, quote: "The greatest wealth is to live content with little.", by: "Plato"},
+    {id: 10, quote: "The only true wisdom is in knowing you know nothing.", by: "Socrates"},
+    {id: 11, quote: "The only way to do great work is to love what you do.", by: "Steve Jobs"},
+    {id: 12, quote: "There is only one good, knowledge, and one evil, ignorance.", by: "Socrates"},
+    {id: 13, quote: "Strong minds discuss ideas, average minds discuss events, weak minds discuss people.", by: "Socrates"},
+    {id: 14, quote: "The secret of happiness, you see, is not found in seeking more, but in developing the capacity to enjoy less.", by: "Socrates"},
+    {id: 15, quote: "Beware that, when fighting monsters, you yourself do not become a monster... for when you gaze long into the abyss, the abyss gazes also into you.", by: "Friedrich Nietzsche"},
+]

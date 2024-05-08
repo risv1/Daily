@@ -8,7 +8,7 @@ const { toasts } = useToast()
 
 <template>
   <ToastProvider>
-    <Toast v-for="toast in toasts" :key="toast.id" v-bind="toast" class="bg-black text-white">
+    <Toast v-for="toast in toasts" :key="toast.id" v-bind="toast" class="bg-black text-cyan-500 border-2 border-cyan-500">
       <div class="grid gap-1">
         <ToastTitle v-if="toast.title">
           {{ toast.title }}
@@ -21,7 +21,7 @@ const { toasts } = useToast()
             {{ toast.description }}
           </ToastDescription>
         </template>
-        <ToastClose class="text-white hover:text-white" />
+        <ToastClose class="text-cyan-500 hover:text-cyan-300" />
       </div>
       <component class="hover:bg-white hover:text-black" :is="toast.action" />
     </Toast>

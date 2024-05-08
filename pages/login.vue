@@ -1,6 +1,6 @@
 <template>
   <LoadWrapper>
-    <div class="bg-indigo-950 w-screen h-screen flex">
+    <div class="bg-gray-950 w-screen h-screen flex">
       <div
         @click="() => navigateTo('/')"
         class="fixed top-0 text-white right-0 p-3 pr-5 text-xl hover:cursor-pointer"
