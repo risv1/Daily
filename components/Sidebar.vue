@@ -1,6 +1,6 @@
 <template>
   <div
-    class="xl:w-[7vw] lg:w-[7vw] md:w-[7vw] sm:w-[7vw] lg:flex md:flex sm:flex border h-[95vh] rounded-lg ml-3 bg-cyan-600 hidden flex-col justify-center items-center"
+    class="z-10 xl:w-[7vw] lg:w-[7vw] md:w-[7vw] sm:w-[9vw] lg:flex md:flex sm:flex border-2 border-cyan-500 h-[97vh] rounded-lg ml-3 bg-opacity-60 bg-black hidden flex-col justify-center items-center"
   >
     <div class="flex flex-col gap-10">
       <Icon
@@ -13,7 +13,7 @@
       />
     </div>
   </div>
-  <div class="lg:hidden md:hidden sm:hidden flex items-center justify-center absolute bottom-0 w-full h-[10vh] border bg-cyan-600">
+  <div class="lg:hidden md:hidden sm:hidden flex items-center justify-center absolute bottom-0 z-10 w-full h-[10vh] border-t-2 border-cyan-500 bg-opacity-60 bg-black">
     <div class="flex flex-row gap-10">
         <Icon
             @click="navigateTo(route.path)"
@@ -35,7 +35,7 @@ const routes = [
     size: 50,
     path: "/me",
   },
-  { icon: "iconoir:task-list", color: "white", size: 50, path: "/me/tasks" },
+  { icon: "iconoir:task-list", color: "white", size: 50, path: "/me/work" },
   {icon: "material-symbols:exercise-outline-sharp", color: "white", size: 50, path: "/me/health"},
   {
     icon: "material-symbols:account-circle-full",
