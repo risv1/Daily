@@ -31,17 +31,14 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { useAuthStore } from "@/store/auth";
+import { reduceDesc } from "@/lib/helpers";
 
 const { user } = useAuthStore();
+const displayName = reduceDesc(user.name);
 
 const greeting = ref("");
-const displayName = computed(() => {
-  if(user){
-  return user.name.length > 10 ? `${user.name.slice(0, 10)}...` : user.name;
-  }
-});
 const date = new Date();
 const day = date.getDate();
 const monthNames = [
@@ -60,7 +57,7 @@ const monthNames = [
 ];
 const month = monthNames[date.getMonth()];
 const formattedDate = ref(`${month} ${day}`);
-const hours = date.getHours();
+const hours = String(date.getHours()).padStart(2, '0');
 const minutes = String(date.getMinutes()).padStart(2, '0');
 const time = ref(`${hours}:${minutes}`);
 
@@ -78,7 +75,7 @@ watchEffect(() => {
 watchEffect(() => {
   const intervalId = setInterval(() => {
     const now = new Date();
-    const hours = now.getHours();
+    const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     time.value = `${hours}:${minutes}`;
   }, 5000);

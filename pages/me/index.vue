@@ -8,17 +8,16 @@
       <Intro />
       <div class="lg:flex md:flex hidden w-full h-3/5 flex-row gap-3 items-end">
         <div
-          class="w-2/3 lg:h-[54vh] md:h-[54vh] border-2 border-cyan-500 bg-black bg-opacity-60 rounded-lg p-5"
+          class="w-2/3 lg:h-[54vh] md:h-[54vh] border-2 border-cyan-500 bg-black bg-opacity-60 rounded-lg"
         >
-          <h1 class="text-white text-xl"></h1>
         </div>
         <div
-          class="w-1/3 lg:h-[54vh] md:h-[54vh] border-2 border-cyan-500 bg-black bg-opacity-60 rounded-lg p-5"
+          class="w-1/3 lg:h-[54vh] md:h-[54vh] border-2 border-cyan-500 bg-black bg-opacity-60 rounded-lg"
         ></div>
       </div>
     </div>
     <div
-      class="xl:w-1/3 xl:h-full lg:w-1/3 lg:h-full md:w-1/3 md:h-full sm:h-full w-full h-[58vh] p-5 mb-5 rounded-lg border-2 border-cyan-500 bg-black bg-opacity-60"
+      class="xl:w-1/3 xl:h-full lg:w-1/3 lg:h-full md:w-1/3 md:h-full sm:h-full w-full h-[62vh] p-5 mb-5 rounded-lg border-2 border-cyan-500 bg-black bg-opacity-60"
     >
       <Events />
     </div>
