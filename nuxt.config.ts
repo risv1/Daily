@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   security: {
     corsHandler: {
       origin: "*",
-      methods: ['POST'],
+      methods: ['GET', 'POST'],
       allowHeaders: ['Content-Type'],
     }
   },

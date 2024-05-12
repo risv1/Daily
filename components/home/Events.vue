@@ -59,10 +59,7 @@ const count = 7;
 const toast = useToast();
 
 const { pending, data: events } = await useLazyFetch("/api/events", {
-  transform: (_events) => {
-    console.log(_events)
-    return _events.events;
-  },
+  transform: (_events) =>  _events.events
 });
 
 watchEffect(() => {

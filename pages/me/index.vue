@@ -10,6 +10,7 @@
         <div
           class="w-2/3 lg:h-[54vh] md:h-[54vh] border-2 border-cyan-500 bg-black bg-opacity-60 rounded-lg"
         >
+        <News />
         </div>
         <div
           class="w-1/3 lg:h-[54vh] md:h-[54vh] border-2 border-cyan-500 bg-black bg-opacity-60 rounded-lg"
