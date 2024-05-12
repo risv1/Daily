@@ -86,7 +86,7 @@ import { useOnline } from "@vueuse/core";
 
 const online = useOnline();
 
-const { user, setUser } = useAuthStore();
+const { setUser } = useAuthStore();
 
 onMounted(async () => {
   try {
