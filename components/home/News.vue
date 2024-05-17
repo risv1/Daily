@@ -11,7 +11,8 @@
         v-for="article in news"
         class="w-full p-3 gap-3 bg-black hover:bg-gray-950 rounded-lg mt-3 flex flex-col"
       >
-        <h3 class="text-sm text-gray-300">{{ article.description }}</h3>
+        <h3 class="text-sm text-gray-300">{{ article.title }}</h3>
+        <p class="text-xs text-gray-300">{{ article.description }}</p>
         <a
           target="_blank"
           :href="article.url"

@@ -11,16 +11,21 @@
 
 <script setup>
 import { useAuthStore } from "@/store/auth";
+import { fetchUser } from "@/lib/fetchUser";
 
-const { user } = useAuthStore();
+const { setUser } = useAuthStore();
 
-onMounted(() => {
-  if (!user) {
-    navigateTo("/login");
+onMounted(async () => {
+  try {
+    const user = useCookie('token');
+    if (user.value === undefined) {
+      navigateTo("/login");
+    } else {
+      console.log("User present");
+    }
+  } catch (error) {
+    console.error(error);
   }
 });
-
-
-const route = useRoute();
 
 </script>
