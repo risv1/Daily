@@ -26,12 +26,13 @@ export default defineEventHandler(async(event)=>{
 
     const newEvent: EventType = {
         id: uuidv4(),
+        user_id: data.id,
         title: body.title,
         description: body.description,
         date: body.date,
         label: body.label,
-        created_at: new Date().toLocaleDateString + " " + new Date().toLocaleTimeString(),
-        updated_at: new Date().toLocaleDateString + " " + new Date().toLocaleTimeString()
+        created_at: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString(),
+        updated_at: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
     } 
 
     const createEvent = await db.insert(events).values(newEvent)

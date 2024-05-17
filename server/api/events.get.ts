@@ -1,3 +1,4 @@
+import { eq } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 import { db } from "~/database/db";
 import { events } from "~/database/schema";
@@ -17,7 +18,7 @@ export default defineEventHandler(async (event) => {
       setResponseStatus(event, 401);
       return { message: "Unauthorized" };
     }
-    const fetchedEvents: EventType[] = await db.select().from(events)
+    const fetchedEvents: EventType[] = await db.select().from(events).where(eq(events.user_id, data.id))
     if(!fetchedEvents) {
       setResponseStatus(event, 404);
       return { message: "Events not found." };

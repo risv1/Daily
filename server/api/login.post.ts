@@ -32,8 +32,6 @@ export default defineEventHandler(async (event) => {
     const isValid = await argon2.verify(user.password, body.password)
     if (!isValid) {
       console.log("Invalid password.");
-      console.log("User password", user.password);
-      console.log("Input password", body.password);
       setResponseStatus(event, 400);
       return {
         message: "Invalid password.",

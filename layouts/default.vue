@@ -1,6 +1,5 @@
 <script setup>
 import { useAuthStore } from "@/store/auth";
-import { fetchUser } from "@/lib/fetchUser";
 
 const { setUser } = useAuthStore();
 
