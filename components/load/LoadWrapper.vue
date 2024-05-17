@@ -1,12 +1,3 @@
-<template>
-    <div v-if="isLoading">
-      <Loader />
-    </div>
-    <div v-else>
-        <slot />
-    </div>
-  </template>
-
 <script setup>
 import { ref } from "vue";
 
@@ -17,5 +8,13 @@ onMounted(() => {
     isLoading.value = false;
   }, 1000);
 });
-
 </script>
+
+<template>
+  <div v-if="isLoading">
+    <Loader />
+  </div>
+  <div v-else>
+    <slot />
+  </div>
+</template>

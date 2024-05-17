@@ -1,3 +1,11 @@
+<script setup>
+import { reduceDesc, calcTimeLeft } from "@/lib/helpers";
+
+defineProps({
+  events: Array,
+});
+</script>
+
 <template>
   <div
     v-for="event in events"
@@ -29,11 +37,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import {reduceDesc, calcTimeLeft} from "@/lib/helpers";
-
-defineProps({
-  events: Array,
-});
-</script>

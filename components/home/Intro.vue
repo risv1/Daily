@@ -1,36 +1,3 @@
-<template>
-  <div
-    class="p-5 md:h-2/5 lg:h-2/5 xl:h-2/5 h-full border-2 border-cyan-500 bg-black bg-opacity-60 rounded-lg text-cyan-500"
-  >
-    <div class="flex flex-row">
-      <h1 class="lg:text-3xl md:text-2xl text-xl font-normal">
-        {{ greeting }} <span class="text-white">{{ displayName }}</span
-        >!
-      </h1>
-      <h2 class="ml-auto lg:text-3xl md:text-2xl text-xl">
-        <span class="text-white font-medium">{{ formattedDate }}</span>, <span class="font-bold">{{ time }}</span>
-      </h2>
-    </div>
-    <div
-      class="xl:w-full lg:w-full md:w-full w-5/6 h-4/5 flex flex-col items-center justify-center gap-3"
-    >
-      <div class="flex flex-row flex-wrap gap-3 lg:mt-0 md:mt-0 sm:mt-0 mt-5">
-        <a
-          v-for="link in freqLinks"
-          :href="link.url"
-          target="_blank"
-          class="hover:cursor-pointer border w-fit h-fit lg:p-5 md:p-5 sm:p-3 p-3 rounded-lg bg-black duration-200 ease-in-out hover:-rotate-6 hover:bg-gradient-to-r from-cyan-500 to-gray-950"
-        >
-          <Icon
-            :name="link.icon"
-            class="text-white xl:w-10 xl:h-10 lg:w-10 lg:h-10 md:w-6 md:h-6 h-5 w-5"
-          />
-        </a>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { useAuthStore } from "@/store/auth";
 import { reduceDesc } from "@/lib/helpers";
@@ -57,12 +24,12 @@ const monthNames = [
 ];
 const month = monthNames[date.getMonth()];
 const formattedDate = ref(`${month} ${day}`);
-const hours = String(date.getHours()).padStart(2, '0');
-const minutes = String(date.getMinutes()).padStart(2, '0');
+const hours = String(date.getHours()).padStart(2, "0");
+const minutes = String(date.getMinutes()).padStart(2, "0");
 const time = ref(`${hours}:${minutes}`);
 
 watchEffect(() => {
-  const hour = Number(time.value.split(':')[0]);
+  const hour = Number(time.value.split(":")[0]);
   if (hour >= 0 && hour < 12) {
     greeting.value = "Good morning";
   } else if (hour >= 12 && hour < 18) {
@@ -75,8 +42,8 @@ watchEffect(() => {
 watchEffect(() => {
   const intervalId = setInterval(() => {
     const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
     time.value = `${hours}:${minutes}`;
   }, 5000);
 
@@ -113,3 +80,37 @@ const freqLinks = [
   },
 ];
 </script>
+
+<template>
+  <div
+    class="p-5 md:h-2/5 lg:h-2/5 xl:h-2/5 h-full border-2 border-cyan-500 bg-black bg-opacity-60 rounded-lg text-cyan-500"
+  >
+    <div class="flex flex-row">
+      <h1 class="lg:text-3xl md:text-2xl text-xl font-normal">
+        {{ greeting }} <span class="text-white">{{ displayName }}</span
+        >!
+      </h1>
+      <h2 class="ml-auto lg:text-3xl md:text-2xl text-xl">
+        <span class="text-white font-medium">{{ formattedDate }}</span
+        >, <span class="font-bold">{{ time }}</span>
+      </h2>
+    </div>
+    <div
+      class="xl:w-full lg:w-full md:w-full w-5/6 h-4/5 flex flex-col items-center justify-center gap-3"
+    >
+      <div class="flex flex-row flex-wrap gap-3 lg:mt-0 md:mt-0 sm:mt-0 mt-5">
+        <a
+          v-for="link in freqLinks"
+          :href="link.url"
+          target="_blank"
+          class="hover:cursor-pointer border w-fit h-fit lg:p-5 md:p-5 sm:p-3 p-3 rounded-lg bg-black duration-200 ease-in-out hover:-rotate-6 hover:bg-gradient-to-r from-cyan-500 to-gray-950"
+        >
+          <Icon
+            :name="link.icon"
+            class="text-white xl:w-10 xl:h-10 lg:w-10 lg:h-10 md:w-6 md:h-6 h-5 w-5"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,3 +1,19 @@
+<script setup>
+import { ref } from "vue";
+
+const login = ref(true);
+
+const switchLogin = () => {
+  console.log("switching layer");
+  login.value = true;
+};
+
+const switchRegister = () => {
+  console.log("switching layer");
+  login.value = false;
+};
+</script>
+
 <template>
   <LoadWrapper>
     <div class="bg-gray-950 w-screen h-screen flex">
@@ -16,19 +32,3 @@
     </div>
   </LoadWrapper>
 </template>
-
-<script setup>
-import { ref } from "vue";
-
-const login = ref(true);
-
-const switchLogin = () => {
-  console.log("switching layer");
-  login.value = true;
-};
-
-const switchRegister = () => {
-  console.log("switching layer");
-  login.value = false;
-};
-</script>

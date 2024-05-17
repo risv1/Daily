@@ -1,3 +1,15 @@
+<script setup>
+import { useAuthStore } from "@/store/auth";
+
+const { user } = useAuthStore();
+
+onMounted(() => {
+  if (!user) {
+    navigateTo("/login");
+  }
+});
+</script>
+
 <template>
   <LoadWrapper>
     <div class="w-screen h-screen bg-gray-800 gap-5 items-center flex flex-row">
@@ -25,15 +37,3 @@
     </div>
   </LoadWrapper>
 </template>
-
-<script setup>
-import { useAuthStore } from "@/store/auth";
-
-const { user } = useAuthStore();
-
-onMounted(() => {
-  if (!user) {
-    navigateTo("/login");
-  }
-});
-</script>

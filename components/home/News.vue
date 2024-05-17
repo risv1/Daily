@@ -1,3 +1,15 @@
+<script setup>
+const count = 10;
+
+const { pending, data: news } = await useLazyFetch("/api/news", {
+  transform: (data) => data.news,
+});
+
+watchEffect(() => {
+  console.log(toRaw(news.value));
+});
+</script>
+
 <template>
   <div class="w-full h-full pb-10">
     <h1 class="text-xl text-white font-medium pt-3 pl-4">News</h1>
@@ -23,16 +35,3 @@
     </ScrollArea>
   </div>
 </template>
-
-<script setup>
-
-const count = 10;
-
-const { pending, data: news } = await useLazyFetch("/api/news", {
-  transform: (data) => data.news,
-});
-
-watchEffect(() => {
-  console.log(toRaw(news.value));
-});
-</script>

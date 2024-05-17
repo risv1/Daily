@@ -1,3 +1,23 @@
+<script setup>
+import { reduceDesc, calcTimeLeft } from "@/lib/helpers";
+import { useToast } from "@/components/ui/toast/use-toast";
+
+defineProps({
+  full: Boolean,
+});
+
+const count = 7;
+const toast = useToast();
+
+const { pending, data: events } = await useLazyFetch("/api/events", {
+  transform: (_events) => _events.events,
+});
+
+watchEffect(() => {
+  console.log(toRaw(events.value));
+});
+</script>
+
 <template>
   <div class="w-full h-full flex-col">
     <div class="w-full h-[5vh] flex flex-row justify-between">
@@ -34,23 +54,3 @@
     </ScrollArea>
   </div>
 </template>
-
-<script setup>
-import { reduceDesc, calcTimeLeft } from "@/lib/helpers";
-import { useToast } from "@/components/ui/toast/use-toast";
-
-defineProps({
-  full: Boolean,
-});
-
-const count = 7;
-const toast = useToast();
-
-const { pending, data: events } = await useLazyFetch("/api/events", {
-  transform: (_events) => _events.events,
-});
-
-watchEffect(() => {
-  console.log(toRaw(events.value));
-});
-</script>

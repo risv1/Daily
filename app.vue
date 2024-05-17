@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import Toaster from "@/components/ui/toast/Toaster.vue";
+import { useOnline } from "@vueuse/core";
+
+const online = useOnline();
+</script>
+
 <template>
   <div
     v-if="!online"
@@ -76,14 +83,6 @@
     <Toaster />
   </div>
 </template>
-
-<script setup lang="ts">
-import Toaster from "@/components/ui/toast/Toaster.vue";
-import { useOnline } from "@vueuse/core";
-
-const online = useOnline();
-
-</script>
 
 <style>
 .page-enter-active,

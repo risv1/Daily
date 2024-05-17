@@ -1,9 +1,3 @@
-<template>
-  <div class="w-full h-full">
-    <slot />
-  </div>
-</template>
-
 <script setup>
 import { useAuthStore } from "@/store/auth";
 import { fetchUser } from "@/lib/fetchUser";
@@ -24,3 +18,9 @@ onMounted(async () => {
 });
 
 </script>
+
+<template>
+  <div class="w-full h-full">
+    <slot />
+  </div>
+</template>

@@ -1,30 +1,3 @@
-<template>
-  <div class="w-full h-10 flex">
-    <NuxtLink
-      to="/"
-      class="text-white gap-1 font-semibold text-2xl pl-5 pt-2 flex flex-row items-center"
-      ><img
-        src="public/icon-green.png"
-        class="w-10 h-10"
-        alt=""
-      />Nuxt</NuxtLink
-    >
-    <NuxtLink
-      v-if="!isLoggedIn"
-      to="/login"
-      class="text-green-500 font-semibold text-2xl pr-5 pt-2 ml-auto"
-      >Login</NuxtLink
-    >
-    <p
-      v-if="isLoggedIn"
-      @click="logout"
-      class="text-green-500 font-semibold text-2xl pr-5 pt-2 ml-auto hover:cursor-pointer"
-    >
-      Logout
-    </p>
-  </div>
-</template>
-
 <script setup>
 import { useAuthStore } from "@/store/auth";
 import { useToast } from "@/components/ui/toast/use-toast";
@@ -65,3 +38,30 @@ const logout = async () => {
   }
 };
 </script>
+
+<template>
+  <div class="w-full h-10 flex">
+    <NuxtLink
+      to="/"
+      class="text-white gap-1 font-semibold text-2xl pl-5 pt-2 flex flex-row items-center"
+      ><img
+        src="public/icon-green.png"
+        class="w-10 h-10"
+        alt=""
+      />Nuxt</NuxtLink
+    >
+    <NuxtLink
+      v-if="!isLoggedIn"
+      to="/login"
+      class="text-green-500 font-semibold text-2xl pr-5 pt-2 ml-auto"
+      >Login</NuxtLink
+    >
+    <p
+      v-if="isLoggedIn"
+      @click="logout"
+      class="text-green-500 font-semibold text-2xl pr-5 pt-2 ml-auto hover:cursor-pointer"
+    >
+      Logout
+    </p>
+  </div>
+</template>

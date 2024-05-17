@@ -1,11 +1,9 @@
-<template>
-    <div class="w-full h-full">
-        
-    </div>
-</template>
-
 <script setup>
 definePageMeta({
-    layout: 'me'
-})
+  layout: "me",
+});
 </script>
+
+<template>
+  <div class="w-full h-full"></div>
+</template>

@@ -1,51 +1,3 @@
-<template>
-  <form
-    class="lg:w-1/3 md:w-1/3 border-2 shadow-md hover:shadow-cyan-500 duration-200 ease-in-out border-cyan-500 rounded-lg bg-indigo-950 bg-opacity-60 p-5 flex flex-col gap-5"
-    @submit="onSubmit"
-  >
-    <h1 class="text-cyan-500 text-3xl font-semibold self-center">Sign up</h1>
-    <div class="flex flex-col gap-2">
-      <label class="text-cyan-500 text-2xl font-normal">Name</label>
-      <Input
-        type="name"
-        placeholder="Name"
-        v-model="name"
-        class="text-lg p-2 rounded-md focus:outline-none"
-      />
-    </div>
-    <div class="flex flex-col gap-2">
-      <label class="text-cyan-500 text-2xl font-normal">Email</label>
-      <Input
-        type="email"
-        placeholder="Email"
-        v-model="email"
-        class="text-lg p-2 rounded-md focus:outline-none"
-      />
-    </div>
-    <div class="flex flex-col gap-2">
-      <label class="text-cyan-500 text-2xl font-normal">Password</label>
-      <Input
-        type="password"
-        placeholder="Password"
-        v-model="password"
-        class="text-lg p-2 rounded-md focus:outline-none"
-      />
-    </div>
-    <Button
-      type="submit"
-      @click="onSubmit($event)"
-      class="bg-cyan-500 hover:bg-cyan-600 mt-auto"
-      >Submit
-    </Button>
-    <p
-      @click="switchLayer"
-      class="text-cyan-500 text-md font-medium hover:cursor-pointer self-center"
-    >
-      Already have an account? Click to login!
-    </p>
-  </form>
-</template>
-
 <script setup>
 import { useToast } from "@/components/ui/toast/use-toast";
 import { h } from "vue";
@@ -121,3 +73,51 @@ const onSubmit = async (event) => {
   }
 };
 </script>
+
+<template>
+  <form
+    class="lg:w-1/3 md:w-1/3 border-2 shadow-md hover:shadow-cyan-500 duration-200 ease-in-out border-cyan-500 rounded-lg bg-indigo-950 bg-opacity-60 p-5 flex flex-col gap-5"
+    @submit="onSubmit"
+  >
+    <h1 class="text-cyan-500 text-3xl font-semibold self-center">Sign up</h1>
+    <div class="flex flex-col gap-2">
+      <label class="text-cyan-500 text-2xl font-normal">Name</label>
+      <Input
+        type="name"
+        placeholder="Name"
+        v-model="name"
+        class="text-lg p-2 rounded-md focus:outline-none"
+      />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label class="text-cyan-500 text-2xl font-normal">Email</label>
+      <Input
+        type="email"
+        placeholder="Email"
+        v-model="email"
+        class="text-lg p-2 rounded-md focus:outline-none"
+      />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label class="text-cyan-500 text-2xl font-normal">Password</label>
+      <Input
+        type="password"
+        placeholder="Password"
+        v-model="password"
+        class="text-lg p-2 rounded-md focus:outline-none"
+      />
+    </div>
+    <Button
+      type="submit"
+      @click="onSubmit($event)"
+      class="bg-cyan-500 hover:bg-cyan-600 mt-auto"
+      >Submit
+    </Button>
+    <p
+      @click="switchLayer"
+      class="text-cyan-500 text-md font-medium hover:cursor-pointer self-center"
+    >
+      Already have an account? Click to login!
+    </p>
+  </form>
+</template>
