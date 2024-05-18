@@ -20,3 +20,12 @@ export const events = pgTable("events", {
   created_at: text("created_at").notNull(),
   updated_at: text("updated_at").notNull(),
 });
+
+export const links = pgTable("links", {
+  id: text("id").primaryKey(),
+  user_id: text("user_id").notNull(),
+  title: text("title").notNull(),
+  url: text("url").notNull(),
+  created_at: text("created_at").notNull(),
+  updated_at: text("updated_at").notNull(),
+});

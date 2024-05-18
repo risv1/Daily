@@ -32,8 +32,8 @@ export const calcTimeLeft = (date: string) => {
 
 };
 
-export const reduceDesc = (desc: string) => {
+export const reduceDesc = (desc: string, length: number) => {
   if (desc) {
-    return desc.length > 10 ? `${desc.slice(0, 10)}...` : desc;
+    return desc.length > length ? `${desc.slice(0, length)}...` : desc;
   }
 };
