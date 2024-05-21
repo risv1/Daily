@@ -24,15 +24,7 @@ export default defineNuxtConfig({
     "@pinia-plugin-persistedstate/nuxt",
     "@vueuse/nuxt",
     'nuxt-icon',
-    "nuxt-security"
   ],
-  security: {
-    corsHandler: {
-      origin: "*",
-      methods: ['GET', 'POST'],
-      allowHeaders: ['Content-Type'],
-    }
-  },
   shadcn: {
     prefix: "",
     componentDir: "./components/ui",

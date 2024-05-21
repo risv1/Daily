@@ -46,7 +46,7 @@ export default defineEventHandler(async (event) => {
       };
     }
 
-    setCookie(event, "token", token, { sameSite: "strict"});
+    setCookie(event, "token", token, { sameSite: "strict", expires: new Date(Date.now() + 3600000)});
 
     setResponseStatus(event, 200);
     return { message: "User logged in successfully.", user: user };

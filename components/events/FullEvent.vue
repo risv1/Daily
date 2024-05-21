@@ -15,10 +15,10 @@ defineProps({
     <div class="w-full h-1/2 flex flex-row p-2">
       <div class="h-fit flex flex-col gap-1 justify-center">
         <h1 class="text-md text-white font-medium">
-          {{ reduceDesc(event.title) }}
+          {{ reduceDesc(event.title, 10) }}
         </h1>
         <h2 class="text-sm text-gray-300">
-          {{ reduceDesc(event.description) }}
+          {{ reduceDesc(event.description, 15) }}
         </h2>
       </div>
       <h2 class="text-red-500 text-sm flex items-center pl-3">

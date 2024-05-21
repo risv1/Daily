@@ -21,7 +21,7 @@ watchEffect(() => {
       ></div>
       <div
         v-for="article in news"
-        class="w-full p-3 gap-3 bg-black hover:bg-gray-950 rounded-lg mt-3 flex flex-col"
+        class="w-full p-3 gap-3 bg-black hover:bg-gray-900 duration-150 ease-in-out rounded-lg mt-3 flex flex-col"
       >
         <h3 class="text-sm text-gray-300">{{ article.title }}</h3>
         <p class="text-xs text-gray-300">{{ article.description }}</p>

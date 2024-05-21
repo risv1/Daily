@@ -1,11 +1,8 @@
 <script setup>
-import { useAuthStore } from "@/store/auth";
-
-const { setUser } = useAuthStore();
 
 onMounted(async () => {
   try {
-    const user = useCookie('token');
+    const user = useCookie('token', {readonly: true});
     if (user.value === undefined) {
       navigateTo("/login");
     } else {

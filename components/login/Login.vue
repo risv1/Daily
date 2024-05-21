@@ -51,6 +51,7 @@ const onSubmit = async (event) => {
         setUser({
           name: data.user.name,
           email: data.user.email,
+          created_at: data.user.created_at,
         });
         console.log("Form submitted successfully!", data);
         toast({

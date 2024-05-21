@@ -3,7 +3,7 @@ import { useAuthStore } from "@/store/auth";
 import { reduceDesc } from "@/lib/helpers";
 
 const { user } = useAuthStore();
-const displayName = reduceDesc(user.name);
+const displayName = reduceDesc(user.name, 10);
 
 const greeting = ref("");
 const date = new Date();

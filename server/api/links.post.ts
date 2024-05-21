@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
         return {message: "Failed to create link"}
     }
 
-    setResponseStatus(event, 200)
+    setResponseStatus(event, 201)
     return {message: "Link created successfully", link: toInsertLink}
 
   } catch (e) {

@@ -41,6 +41,6 @@ export default defineEventHandler(async(event)=>{
         return {message: "Failed to create event"}
     }
 
-    setResponseStatus(event, 200)
+    setResponseStatus(event, 201)
     return {message: "Event created successfully", event: newEvent}
 })  

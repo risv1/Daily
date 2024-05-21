@@ -11,7 +11,7 @@ defineProps({
   >
     <div
       @click="($e) => $e.stopPropagation()"
-      class="lg:top-[10vh] lg:left-[30vw] md:top-[20vh] md:left-[30vw] sm:top-[20vh] sm:left-[20vw] top-[25vh] left-[10vw] border-cyan-500 border-2 shadow-md hover:shadow-cyan-500 lg:w-2/5 lg:h-4/5 md:w-2/5 md:h-3/5 sm:w-3/5 sm:h-3/5 w-4/5 h-fit p-3 absolute inset-10 bg-black rounded-lg flex justify-center items-center"
+      class="lg:top-[10vh] lg:left-[30vw] md:top-[20vh] md:left-[30vw] sm:top-[20vh] sm:left-[20vw] top-[15vh] left-[10vw] border-cyan-500 border-2 shadow-md hover:shadow-cyan-500 lg:w-2/5 lg:h-4/5 md:w-2/5 md:h-3/5 sm:w-3/5 sm:h-3/5 w-4/5 h-fit p-3 absolute inset-10 bg-black rounded-lg flex justify-center items-center"
     >
       <Icon
         @click="closeModal"

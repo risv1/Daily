@@ -1,13 +1,9 @@
 <script setup>
-import { reduceDesc, calcTimeLeft } from "@/lib/helpers";
-import { useToast } from "@/components/ui/toast/use-toast";
-
 defineProps({
   full: Boolean,
 });
 
 const count = 7;
-const toast = useToast();
 
 const { pending, data: events } = await useLazyFetch("/api/events", {
   transform: (_events) => _events.events,
@@ -29,7 +25,7 @@ watchEffect(() => {
         View all
       </h2>
     </div>
-    <ScrollArea class="w-full h-full flex-col flex pb-3">
+    <div class="w-full h-full flex-col flex pb-3">
       <div
         v-if="pending"
         v-for="index in count"
@@ -47,10 +43,17 @@ watchEffect(() => {
           <p class="self-center">+</p>
         </div>
       </div>
-      <div v-else class="w-full h-full">
+      <ScrollArea v-else class="w-full h-full pt-5 flex flex-col">
         <MiniEvent v-if="!full" :events="events" />
         <FullEvent v-else :events="events" />
-      </div>
-    </ScrollArea>
+      </ScrollArea>
+      <div
+          v-if="events && events.length < 8"
+          @click="() => navigateTo('/me/events/new-event')"
+          class="w-10 h-10 self-center mt-1 p-1 pb-2 bg-cyan-600 duration-150 ease-in-out hover:cursor-pointer hover:bg-gradient-to-r from-cyan-400 to-cyan-900 rounded-full flex justify-center items-center text-2xl font-bold text-white"
+        >
+          <p class="self-center">+</p>
+        </div>
+    </div>
   </div>
 </template>

@@ -12,7 +12,6 @@ const timeRef = ref(null);
 const labelRef = ref(null);
 
 const submit = async () => {
-  event.preventDefault();
   try {
     if (
       !titleRef.value ||
@@ -68,54 +67,54 @@ const submit = async () => {
 </script>
 
 <template>
-  <Modal route="/me/events">
-    <form @submit.prevent class="w-full md:w-4/5 h-3/5 flex flex-col">
+  <Modal :closeModal="()=>navigateTo('/me/events')">
+    <form @submit.prevent class="w-full md:w-4/5 h-fit gap-2 flex flex-col">
       <h1 class="text-xl text-white font-medium">New Event</h1>
       <div class="w-full h-full flex justify-center flex-col">
         <div
-          class="w-full bg-black gap-1 hover:bg-gray-950 rounded-lg h-fit flex flex-col"
+          class="w-full gap-1 rounded-lg h-fit flex flex-col"
         >
           <h3 class="text-sm text-gray-300">Title</h3>
           <Input
             v-model="titleRef"
             type="text"
-            class="text-xs bg-gray-900 text-cyan-500 hover:cursor-pointer w-full"
+            class="text-md bg-gray-900 text-cyan-500 hover:cursor-pointer border-none w-full"
           />
-          <h3 class="text-sm text-gray-300">Description</h3>
+          <h3 class="text-md text-gray-300">Description</h3>
           <Input
             v-model="descRef"
             type="text"
-            class="text-xs bg-gray-900 text-cyan-500 hover:cursor-pointer w-full"
+            class="text-md bg-gray-900 text-cyan-500 hover:cursor-pointer border-none w-full"
           />
           <div class="w-full flex flex-row gap-2">
             <div class="w-1/2 flex flex-col">
-              <h3 class="text-sm text-gray-300">Date</h3>
+              <h3 class="text-md text-gray-300">Date</h3>
               <label>
                 <Input
                   v-model="dateRef"
                   type="date"
-                  class="text-xs bg-gray-900 text-cyan-500 hover:cursor-pointer"
+                  class="text-md bg-gray-900 text-cyan-500 hover:cursor-pointer border-none"
               /></label>
             </div>
             <div class="w-1/2 flex flex-col">
-              <h3 class="text-sm text-gray-300">Time</h3>
+              <h3 class="text-md text-gray-300">Time</h3>
               <label>
                 <Input
                   v-model="timeRef"
                   type="time"
-                  class="text-xs bg-gray-900 text-cyan-500 hover:cursor-pointer w-full"
+                  class="text-md bg-gray-900 text-cyan-500 hover:cursor-pointer border-none w-full"
                 />
               </label>
             </div>
           </div>
-          <h3 class="text-sm text-gray-300">Label</h3>
+          <h3 class="text-md text-gray-300">Label</h3>
           <select
             default="None"
             v-model="labelRef"
-            class="text-xs bg-gray-900 h-full rounded-md text-cyan-500 hover:cursor-pointer w-full md:w-1/2"
+            class="text-md h-fit p-2 bg-gray-900 rounded-md text-cyan-500 hover:cursor-pointer w-1/2"
           >
-            <option class="w-10 h-10">None</option>
-            <option class="w-10 h-10">Imp</option>
+            <option>None</option>
+            <option>Imp</option>
           </select>
           <button
             @click="submit"

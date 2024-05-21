@@ -2,7 +2,6 @@
 import { useAuthStore } from "@/store/auth";
 import { quotes } from "@/utils/quotes";
 
-const { user } = useAuthStore();
 const chosenQuote = ref("");
 
 const chooseRandomQuote = () => {
