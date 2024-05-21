@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken"
 import { eq } from "drizzle-orm"
+import jwt from "jsonwebtoken"
 import { db } from "~/database/db"
-import { links } from "~/database/schema"
+import { events } from "~/database/schema"
 import { UserPayload } from "~/models/payload"
 
 export default defineEventHandler(async(event)=>{
@@ -21,14 +21,14 @@ export default defineEventHandler(async(event)=>{
     if(!id){
         setResponseStatus(event, 400)
         return {message: "Couldn't parse request"}
-    }   
+    }
 
-    const deleteLink = await db.delete(links).where(eq(links.id, id))
-    if(deleteLink){
+    const deleteEvent = await db.delete(events).where(eq(events.id, id))
+    if(deleteEvent){
         setResponseStatus(event, 200)
-        return {message: "Link deleted"}
+        return {message: "Event deleted"}
     }
 
     setResponseStatus(event, 400)
-    return {message: "Couldn't delete link"}
+    return {message: "Couldn't delete event"}
 })

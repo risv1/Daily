@@ -1,17 +1,53 @@
-<script setup>
+<script setup lang="ts">
+import { useToast } from '../ui/toast';
+
 defineProps({
   full: Boolean,
 });
 
+const { toast } = useToast()
+
 const count = 7;
 
 const { pending, data: events } = await useLazyFetch("/api/events", {
-  transform: (_events) => _events.events,
+  transform: (_events: any) => _events.events,
 });
 
-watchEffect(() => {
-  console.log(toRaw(events.value));
-});
+const confirmation = (eventId: string) => {
+  const res = confirm("Are you sure you want to delete this event?");
+  if (res) {
+    deleteEvent(eventId);
+  }
+};
+
+const deleteEvent = async(eventId: string) =>{
+  try{
+    const res = await fetch('/api/events', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: eventId,
+      }),
+    });
+    if(res.ok){
+      const data = await res.json();
+      toast({
+        title: 'Success!',
+        description: data.message,
+      })
+      const newEvents = events.value.filter((event: any) => event.id !== eventId);
+      events.value = newEvents;
+    }
+  } catch (error) {
+    toast({
+      title: 'Error!',
+      description: 'An error occurred. Please try again.',
+    })
+  }
+};
+
 </script>
 
 <template>
@@ -19,6 +55,7 @@ watchEffect(() => {
     <div class="w-full h-[5vh] flex flex-row justify-between">
       <h1 class="text-xl text-white font-medium">Upcoming events</h1>
       <h2
+        v-if="!full"
         class="text-lg text-gray-300 hover:text-white font-medium hover:cursor-pointer"
         @click="() => navigateTo('/me/events')"
       >
@@ -45,12 +82,12 @@ watchEffect(() => {
       </div>
       <ScrollArea v-else class="w-full h-full pt-5 flex flex-col">
         <MiniEvent v-if="!full" :events="events" />
-        <FullEvent v-else :events="events" />
+        <FullEvent v-else :events="events" @DeleteEvent="confirmation" />
       </ScrollArea>
       <div
           v-if="events && events.length < 8"
           @click="() => navigateTo('/me/events/new-event')"
-          class="w-10 h-10 self-center mt-1 p-1 pb-2 bg-cyan-600 duration-150 ease-in-out hover:cursor-pointer hover:bg-gradient-to-r from-cyan-400 to-cyan-900 rounded-full flex justify-center items-center text-2xl font-bold text-white"
+          class="w-10 h-10 self-center lg:mb-0 md:mb-0 mb-6 mt-1 p-1 pb-2 bg-cyan-600 duration-150 ease-in-out hover:cursor-pointer hover:bg-gradient-to-r from-cyan-400 to-cyan-900 rounded-full flex justify-center items-center text-2xl font-bold text-white"
         >
           <p class="self-center">+</p>
         </div>
