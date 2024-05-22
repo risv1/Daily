@@ -3,17 +3,32 @@ import Upload from "~/components/work/Upload.vue";
 import Categories from "~/components/work/Categories.vue";
 import EnterFocus from "~/components/work/EnterFocus.vue";
 import Files from "~/components/work/Files.vue";
+import type { Category } from "~/models/category";
 
 definePageMeta({
   layout: "me",
 });
 
-const comps = [
-  { component: Categories },
-  { component:  Files },
-  { component: Upload },
-  { component: EnterFocus },
-];
+const { pending, data: categories } = await useLazyFetch("/api/categories", {
+  method: "get",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  transform: (data: any) => data.categories,
+});
+
+watchEffect(() => {
+  console.log(categories.value);
+});
+
+const appendCategory = (category: Category) => {
+  if(categories.value !== null){
+    categories.value.push(category);
+  } else{
+    categories.value = [category];
+  }
+};
+
 </script>
 
 <template>
@@ -26,8 +41,17 @@ const comps = [
       <Events :full="false" />
     </div>
     <div class="lg:w-2/3 md:w-2/3 grid grid-cols-2 grid-rows-2 w-full h-full gap-2">
-      <div v-for="comp in comps" class="bg-black bg-opacity-60 p-5 rounded-lg border-2 border-cyan-500">
-        <component :is="comp.component" />
+      <div class="bg-black bg-opacity-60 p-5 rounded-lg border-2 border-cyan-500">
+        <Categories :isPending="pending" :categories="categories" @AddedCategory="appendCategory" />
+      </div>
+      <div class="bg-black bg-opacity-60 p-5 rounded-lg border-2 border-cyan-500">
+        <Files />
+      </div>
+      <div class="bg-black bg-opacity-60 p-5 rounded-lg border-2 border-cyan-500">
+        <Upload />
+      </div>
+      <div class="bg-black bg-opacity-60 p-5 rounded-lg border-2 border-cyan-500">
+        <EnterFocus />
       </div>
     </div>
   </div>

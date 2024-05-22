@@ -19,6 +19,13 @@ const clearInput = () => {
 };
 
 const uploadFile = async () => {
+  if(!fileRef.value || !categoryRef.value) {
+    toast({
+      title: "No file selected",
+      description: "Please select a file to upload",
+    });
+    return;
+  }
   const formData = new FormData();
   formData.append("file", fileRef.value!, fileRef.value?.name);
   formData.append("category", categoryRef.value);
@@ -35,6 +42,8 @@ const uploadFile = async () => {
         description: data.message,
       });
     }
+    fileRef.value = undefined;
+    categoryRef.value = "";
   } catch (e) {
     toast({
       title: "Error uploading file",
@@ -59,7 +68,7 @@ const uploadFile = async () => {
     <div
       class="w-full border-r-2 border-l-2 border-cyan-500 flex p-3 justify-center items-center gap-2 flex-col bg-gray-900"
     >
-      <label class="text-sm text-cyan-500 font-medium">Category</label>
+      <label class="text-sm text-cyan-500 self-start pl-4">Category</label>
       <input
         v-model="categoryRef"
         type="text"

@@ -1,13 +1,9 @@
 import { UserPayload } from "~/models/payload";
 import jwt from "jsonwebtoken";
 import { supabase } from "~/utils/supabase";
+import {config} from "dotenv";
 
-type Part = {
-  filename: string;
-  data: Buffer;
-  type: string;
-  name: string;
-};
+config();
 
 export default defineEventHandler(async (event) => {
   try {
@@ -35,7 +31,7 @@ export default defineEventHandler(async (event) => {
     console.log("category: ", category);
 
     const { data, error } = await supabase.storage
-      .from("docs")
+      .from(process.env.SUPABASE_BUCKET_NAME!)
       .upload(`${verified.id}/${category}/${fileName}.${fileType}`, fileData, {
         upsert: false,
       });

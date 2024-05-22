@@ -29,3 +29,11 @@ export const links = pgTable("links", {
   created_at: text("created_at").notNull(),
   updated_at: text("updated_at").notNull(),
 });
+
+export const categories = pgTable("categories", {
+  id: text("id").primaryKey(),
+  user_id: text("user_id").notNull().references(()=>users.id),
+  name: text("title").notNull(),
+  created_at: text("created_at").notNull(),
+  updated_at: text("updated_at").notNull(),
+})
