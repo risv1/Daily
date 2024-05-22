@@ -16,7 +16,6 @@ const filterEndedEvents = (events: EventType[]) => {
   let ended = [];
   for (let i = 0; i < events.length; i++) {
     const remTime = calcTimeLeft(events[i].date);
-    console.log("remtime", remTime);
     if (remTime === "Event ended") {
       ended.push(events[i]);
     }
@@ -71,6 +70,7 @@ const clearEndedEvents = async () => {
       <div
         v-for="event in endedEvents"
         :key="event.id"
+        @dblclick="navigateTo(`/me/events/edit/${event.id}`)"
         class="bg-black w-full h-fit rounded-lg mt-5 hover:bg-gray-900 duration-150 ease-in-out"
       >
         <EventHolder :event="event" />

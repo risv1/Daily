@@ -14,7 +14,6 @@ const filterEndedEvents = (events: EventType[]) => {
   let onGoing = [];
   for (let i = 0; i < events.length; i++) {
     const remTime = calcTimeLeft(events[i].date);
-    console.log("remtime", remTime);
     if (remTime !== "Event ended") {
       onGoing.push(events[i]);
     }
