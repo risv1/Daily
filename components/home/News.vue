@@ -5,9 +5,6 @@ const { pending, data: news } = await useLazyFetch("/api/news", {
   transform: (data) => data.news,
 });
 
-watchEffect(() => {
-  console.log(toRaw(news.value));
-});
 </script>
 
 <template>

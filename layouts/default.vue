@@ -1,5 +1,4 @@
 <script setup>
-
 onMounted(async () => {
   try {
     const user = useCookie('token', {readonly: true});
