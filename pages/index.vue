@@ -1,5 +1,4 @@
 <script setup>
-import { useAuthStore } from "@/store/auth";
 import { quotes } from "@/utils/quotes";
 
 const chosenQuote = ref("");
@@ -50,7 +49,7 @@ onMounted(() => {
         </div>
       </div>
       <div
-        class="lg:w-2/5 lg:flex md:flex md:w-2/5 xl:text-5xl lg:text-3xl md:text-2xl text-md h-full flex-col justify-center hidden"
+        class="lg:w-2/5 lg:flex md:flex md:w-2/5 xl:text-4xl lg:text-3xl md:text-2xl text-md h-full flex-col justify-center hidden"
       >
         <p class="text-white italic w-4/5">"{{ chosenQuote.quote }}"</p>
         <p class="text-white font-semibold pl-20 pt-5">
