@@ -53,6 +53,11 @@ const uploadFile = async () => {
         title: "Success!",
         description: data.message,
       });
+    }else{
+      toast({
+        title: "Error!",
+        description: data.message,
+      });
     }
     fileRef.value = undefined;
     categoryRef.value = "";

@@ -81,7 +81,7 @@ const selectCategory = (category: Category) => {
         <div v-if="isPending" class="flex flex-col w-11/12 h-fit">
           <div
             v-for="index in count"
-            class="w-full h-10 bg-gradient-to-t from-black to bg-gray-900 animate-pulse rounded-lg"
+            class="w-full h-10  bg-gradient-to-r from-gray-800 via-gray-900 to-gray-950 animate-pulse rounded-lg"
           ></div>
         </div>
         <div

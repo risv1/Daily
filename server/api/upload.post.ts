@@ -2,6 +2,9 @@ import { UserPayload } from "~/models/payload";
 import jwt from "jsonwebtoken";
 import { supabase } from "~/utils/supabase";
 import {config} from "dotenv";
+import { db } from "~/database/db";
+import { categories } from "~/database/schema";
+import { eq } from "drizzle-orm";
 
 config();
 
@@ -26,13 +29,18 @@ export default defineEventHandler(async (event) => {
 
     const fileData = getFileData.data;
     const fileName = getFileData.filename;
-    const fileType = getFileData.type.split("/")[1];
     const category = ((body as any)[1] as any).data.toString();
-    console.log("category: ", category);
+
+    const [checkCategory] = await db.select().from(categories).where(eq(categories.name, category))
+    console.log("category check: ", checkCategory);
+    if (!checkCategory) {
+      setResponseStatus(event, 400);
+      return { message: "Category not found!" };
+    }
 
     const { data, error } = await supabase.storage
       .from(process.env.SUPABASE_BUCKET_NAME!)
-      .upload(`${verified.id}/${category}/${fileName}.${fileType}`, fileData, {
+      .upload(`${verified.id}/${category}/${fileName}`, fileData, {
         upsert: false,
       });
     if (error) {

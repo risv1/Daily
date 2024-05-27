@@ -82,7 +82,7 @@ const clearSelectedCategory = () => {
       <div
         class="bg-black bg-opacity-60 p-5 rounded-lg border-2 border-cyan-500"
       >
-        <Files :files="categoryFiles" :isPending="filesPending" />
+        <Files :files="categoryFiles" :selectedCategory="selectedCategory" :isPending="filesPending" />
       </div>
       <div
         class="bg-black bg-opacity-60 p-5 rounded-lg border-2 border-cyan-500"

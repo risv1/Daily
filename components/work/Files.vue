@@ -1,10 +1,76 @@
 <script setup lang="ts">
 import { reduceDesc } from "~/lib/helpers";
+import type { Category } from "~/models/category";
+import { useToast } from "../ui/toast";
 
-defineProps({
+const props = defineProps({
   isPending: Boolean,
+  selectedCategory: Object as PropType<Category>,
   files: Array<any>,
 });
+
+const { toast } = useToast();
+
+const downloadFile = async (fileName: string) => {
+  if (props.selectedCategory !== undefined) {
+    try {
+      const res = await fetch(
+        `/api/download-file/${props.selectedCategory?.name}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ fileName: fileName }),
+        }
+      );
+      if (res.ok) {
+        const blob = await res.blob();
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+      }
+    } catch (error) {
+      toast({
+        title: "Error!",
+        description: "Failed to download file",
+      })
+      console.error(error);
+    }
+  }
+};
+
+const deleteFile = async (fileName: string) => {
+  if (props.selectedCategory !== undefined) {
+    try {
+      const res = await fetch(
+        `/api/delete-file/${props.selectedCategory?.name}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ fileName: fileName }),
+        }
+      );
+      const data = await res.json();
+      if (res.ok) {
+        console.log(data);
+        toast({
+          title: "Success!",
+          description: data.message,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Error!",
+        description: "Failed to delete file",
+      });
+    }
+  }
+};
 
 const count = 10;
 </script>
@@ -17,7 +83,7 @@ const count = 10;
         <div v-if="isPending" class="flex flex-col w-11/12 h-fit">
           <div
             v-for="index in count"
-            class="w-full mt-5 h-10 bg-gradient-to-t from-black to bg-gray-900 animate-pulse rounded-lg"
+            class="w-full mt-5 h-10 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-950 animate-pulse rounded-lg"
           ></div>
         </div>
         <div
@@ -29,9 +95,20 @@ const count = 10;
         <div
           v-else
           v-for="file in files"
-          class="w-8/12 duration-150 ease-in-out hover:cursor-pointer flex justify-between px-10 items-center bg-black hover:bg-gray-900 h-fit p-2 rounded-lg mt-3 text-center text-lg text-cyan-500"
+          class="w-10/12 duration-150 ease-in-out flex flex-row items-center justify-between px-10 bg-black hover:bg-gray-900 h-fit p-2 rounded-lg mt-3 text-center text-lg text-cyan-500"
         >
-          <span>{{ reduceDesc(file.name, 15) }}</span>
+          <span>{{ reduceDesc(file.name, 15) }}</span
+          ><span class="flex flex-row gap-3"
+            ><Icon
+              @click="downloadFile(file.name)"
+              name="material-symbols:download-2-outline"
+              class="w-5 h-5 hover:cursor-pointer"
+              color="cyan" /><Icon
+              @click="deleteFile(file.name)"
+              name="material-symbols:auto-delete-outline"
+              class="w-5 h-5 hover:cursor-pointer"
+              color="red"
+          /></span>
         </div>
       </div>
     </ScrollArea>
