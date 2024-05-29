@@ -21,7 +21,7 @@ onMounted(async () => {
     <div class="w-10/12 h-full bg-gradient-to-r from-gray-800 via-gray-900 to-gray-950 animate-pulse rounded-lg"></div>
   </div>
   <div v-else>
-    <h1 class="mt-3 text-lg font-medium text-cyan-500">{{ props.fileName }}</h1>
+    <h1 class="mt-3 text-lg font-medium text-white">{{ props.fileName }}</h1>
     <embed class="mt-3" v-if="fileUrl" :src="fileUrl" width="100%" height="600px" />
   </div>
 </template>

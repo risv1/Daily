@@ -5,11 +5,12 @@ Daily is an application to help me navigate around my frequent visits and manage
 
 ## Features
 - Schedule Management: Keep track of daily activities and events.
+- Work: Store and save documents as well as avoid distractions via Focus Mode.
 - Navigation Assistance: Provides destinations to frequent visits.
 - Health tracking: Update and keep track of your health metrics.
 
 ## Usage
-1. Register and Login with your created account.
+1. Register and login with your created account.
 2. Add events with scheduled completion time.
 3. Update health metrics and see timeline (WIP).
 4. Add custom visits.
