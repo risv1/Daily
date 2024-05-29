@@ -41,6 +41,13 @@ const downloadFile = async (fileName: string) => {
   }
 };
 
+const confirmDelete = async (fileName: string) => {
+  const result = confirm("Are you sure you want to delete this file?");
+  if (result) {
+    deleteFile(fileName);
+  }
+};
+
 const deleteFile = async (fileName: string) => {
   if (props.selectedCategory !== undefined) {
     try {
@@ -104,7 +111,7 @@ const count = 10;
               name="material-symbols:download-2-outline"
               class="w-5 h-5 hover:cursor-pointer"
               color="cyan" /><Icon
-              @click="deleteFile(file.name)"
+              @click="confirmDelete(file.name)"
               name="material-symbols:auto-delete-outline"
               class="w-5 h-5 hover:cursor-pointer"
               color="red"

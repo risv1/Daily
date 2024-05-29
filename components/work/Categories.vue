@@ -36,10 +36,6 @@ const addCategory = async (category: string) => {
     });
     const data = await res.json();
     if (res.ok) {
-      toast({
-        title: "Success!",
-        description: data.message,
-      });
       emit("AddedCategory", data.category);
       setOpenInput(false);
     } else {
@@ -81,7 +77,7 @@ const selectCategory = (category: Category) => {
         <div v-if="isPending" class="flex flex-col w-11/12 h-fit">
           <div
             v-for="index in count"
-            class="w-full h-10  bg-gradient-to-r from-gray-800 via-gray-900 to-gray-950 animate-pulse rounded-lg"
+            class="w-full h-10 mt-3 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-950 animate-pulse rounded-lg"
           ></div>
         </div>
         <div

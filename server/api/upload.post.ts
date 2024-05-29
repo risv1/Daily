@@ -42,6 +42,7 @@ export default defineEventHandler(async (event) => {
       .from(process.env.SUPABASE_BUCKET_NAME!)
       .upload(`${verified.id}/${category}/${fileName}`, fileData, {
         upsert: false,
+        contentType: "application/pdf",
       });
     if (error) {
       setResponseStatus(event, 500);

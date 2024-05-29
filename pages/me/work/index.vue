@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useToast } from "~/components/ui/toast";
 import type { Category } from "~/models/category";
 
 definePageMeta({
@@ -8,6 +9,7 @@ definePageMeta({
 const selectedCategory = ref<Category>();
 const filesPending = ref<boolean>(false);
 const categoryFiles = ref<any[]>([]);
+const { toast } = useToast();
 
 const { pending, data: categories } = await useLazyFetch("/api/categories", {
   method: "get",
@@ -40,8 +42,16 @@ watchEffect(async () => {
 const appendCategory = (category: Category) => {
   if (categories.value !== null) {
     categories.value.push(category);
+    toast({
+      title: "Success!",
+      description: "Category added successfully",
+    });
   } else {
-    categories.value = [category];
+    categories.value = [...categories.value];
+    toast({
+      title: "Error!",
+      description: "Failed to add category",
+    });
   }
 };
 
@@ -82,7 +92,11 @@ const clearSelectedCategory = () => {
       <div
         class="bg-black bg-opacity-60 p-5 rounded-lg border-2 border-cyan-500"
       >
-        <Files :files="categoryFiles" :selectedCategory="selectedCategory" :isPending="filesPending" />
+        <Files
+          :files="categoryFiles"
+          :selectedCategory="selectedCategory"
+          :isPending="filesPending"
+        />
       </div>
       <div
         class="bg-black bg-opacity-60 p-5 rounded-lg border-2 border-cyan-500"

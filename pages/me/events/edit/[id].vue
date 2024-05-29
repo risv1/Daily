@@ -23,12 +23,9 @@ const labelRef = ref<string>();
 
 const { data: eventData } = await useFetch(`/api/get-event/${id.value}`, {
   transform: (data: EventPayload) => {
-    console.log("data: ", data.event);
     titleRef.value = data.event.title;
     descRef.value = data.event.description;
     dateRef.value = data.event.date.split(" ")[0];
-    console.log("date: ", data.event.date.split(" ")[0]);
-    console.log("time: ", data.event.date.split(" ")[1]);
     timeRef.value = data.event.date.split(" ")[1];
     labelRef.value = data.event.label;
   },
@@ -56,7 +53,6 @@ const updateEvent = async () => {
       date: dateRef.value + " " + time,
       label: labelRef.value,
     };
-    console.log("putEventData: ", putEventData);
     const result = EventSchema.safeParse(putEventData);
     if (!result.success) {
         toast({

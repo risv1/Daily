@@ -83,7 +83,7 @@ const freqLinks = [
 
 <template>
   <div
-    class="p-5 md:h-2/5 lg:h-2/5 xl:h-2/5 h-full border-2 border-cyan-500 bg-black bg-opacity-60 rounded-lg text-cyan-500"
+    class="p-5 md:h-2/5 lg:h-2/5 xl:h-2/5 h-full border shadow-lg shadow-cyan-900 border-cyan-500 bg-black bg-opacity-60 rounded-lg text-cyan-500"
   >
     <div class="flex flex-row">
       <h1 class="lg:text-3xl md:text-2xl text-xl font-normal">

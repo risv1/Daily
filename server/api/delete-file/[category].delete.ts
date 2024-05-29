@@ -1,6 +1,9 @@
 import jwt from "jsonwebtoken";
 import { UserPayload } from "~/models/payload";
 import { supabase } from "~/utils/supabase";
+import {config} from "dotenv"
+
+config();
 
 export default defineEventHandler(async (event) => {
   try {
