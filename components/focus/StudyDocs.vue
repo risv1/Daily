@@ -3,7 +3,7 @@ const count = 10;
 
 const emit = defineEmits(["OpenPDF"])
 
-const { data: files, pending } = useLazyFetch("/api/get-files/Documents", {
+const { data: files, pending } = useLazyFetch("/api/get-files/Focus", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
@@ -20,7 +20,7 @@ const openPdf = (file: any) => {
 </script>
 
 <template>
-  <div class="w-full h-4/5 flex flex-col">
+  <div class="w-full mt-5 h-4/5 flex flex-col">
     <div v-if="pending" class="flex flex-col w-full h-fit gap-3 items-center">
       <div
         v-for="index in count"
@@ -29,7 +29,7 @@ const openPdf = (file: any) => {
     </div>
     <div v-else-if="files === null" class="flex flex-col w-full h-fit">
       <div class="w-full h-10 bg-red-500 rounded-b-lg">
-        <h1 class="text-white pt-1 text-center">No files found</h1>
+        <h1 class="text-white pt-1 text-center">No files found. Make sure you have your documents stored in a 'Focus' folder!</h1>
       </div>
     </div>
     <div v-else class="w-full">

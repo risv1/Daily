@@ -12,13 +12,12 @@ onMounted(async () => {
   const response = await fetch(`/api/get-fileUrl/${props.fileName}`);
   const data = await response.json();
   fileUrl.value = data.fileUrl
-  console.log(fileUrl.value);
   pending.value = false;
 });
 </script>
 
 <template>
-  <div v-if="pending" class="flex flex-col w-full h-fit gap-3 items-center">
+  <div v-if="pending" class="flex flex-col w-full h-full gap-3 items-center">
     <div class="w-10/12 h-full bg-gradient-to-r from-gray-800 via-gray-900 to-gray-950 animate-pulse rounded-lg"></div>
   </div>
   <div v-else>
