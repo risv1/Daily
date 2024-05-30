@@ -2,6 +2,8 @@
 import { useDebounceFn } from "@vueuse/core";
 const searchRef = ref<string>("");
 const videosRef = ref<any[]>([]);
+const watchingVideo = ref<boolean>(false);
+const watchingVideoId = ref<string>("");
 
 const searchYt = useDebounceFn(async (value: string) => {
   const { data: videos } = await useFetch("/api/search-videos", {
@@ -14,6 +16,11 @@ const searchYt = useDebounceFn(async (value: string) => {
   });
   videosRef.value = videos.value;
 }, 1000);
+
+const watchVideo = (videoId: string) => {
+  watchingVideo.value = true;
+  watchingVideoId.value = videoId;
+};
 
 watchEffect(() => {
   if (searchRef.value.length > 0) {
@@ -38,7 +45,8 @@ watchEffect(() => {
         <p class="text-white font-normal">Search for a video to watch...</p>
       </div>
       <div class="w-full mt-3 flex flex-col gap-3 items-center">
-        <VideoMap :videos="videosRef" />
+        <VideoMap v-if="!watchingVideo" :videos="videosRef" @WatchVideo="watchVideo" />
+        <ViewVideo v-else :videoId="watchingVideoId" @CloseVideo="watchingVideo = false" />
       </div>
     </div>
   </div>
