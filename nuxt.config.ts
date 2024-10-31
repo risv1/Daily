@@ -1,32 +1,23 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  app: {
-    pageTransition: {
-      name: 'fade',
-      mode: 'out-in' 
-    },
-    layoutTransition: {
-      name: 'slide',
-      mode: 'out-in' 
-    }
-  },
-  components: [
-    {
-      path: "~/components",
-      pathPrefix: false,
-    }
-  ],
-  devtools: { enabled: true },
+  compatibilityDate: "2024-10-24",
   modules: [
-    "@nuxtjs/tailwindcss",
-    "shadcn-nuxt",
+    "@vueuse/nuxt",
+    "@nuxt/icon",
+    "@unocss/nuxt",
+    "@nuxt/eslint",
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
-    "@vueuse/nuxt",
-    'nuxt-icon',
   ],
-  shadcn: {
-    prefix: "",
-    componentDir: "./components/ui",
+  ssr: false,
+  devtools: { enabled: true },
+  css: ["./app/app.css"],
+  srcDir: "app",
+  serverDir: "server",
+  unocss: {
+    nuxtLayers: true,
   },
+  imports: {
+    dirs: ["./store"],
+  }
 });

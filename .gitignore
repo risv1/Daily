@@ -5,11 +5,14 @@
 .nitro
 .cache
 dist
+*.db
+.drizzle
 
 # Node dependencies
 node_modules
 
-drizzle
+# drizzle
+drizzle/
 
 # Logs
 logs

@@ -1,21 +1,18 @@
-# Daily
+# Nuxt 3 Starter Template
 
-## Description
-Daily is an application to help me navigate around my frequent visits and manage my everyday schedule, built using [Nuxt](https://nuxt.com/) and [Supabase](https://supabase.com/).
+A modern Nuxt 3 starter template with Drizzle ORM, ESLint, Pinia, Docker, and UnoCSS. This template provides a robust foundation for building full-stack applications with best practices and powerful tools.
 
-## Features
-- Schedule Management: Keep track of daily activities and events.
-- Work: Store and save documents as well as avoid distractions via Focus Mode.
-- Navigation Assistance: Provides destinations to frequent visits.
-- Health tracking: Update and keep track of your health metrics.
+## 🚀 Stack
 
-## Usage
-1. Register and login with your created account.
-2. Add events with scheduled completion time.
-3. Update health metrics and see timeline (WIP).
-4. Add custom visits.
-5. Use Focus Mode to avoid distractions while reading (WIP).
+![Nuxt 3 Starter Template](app/public/images/image.png)
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- **[Nuxt 3](https://nuxt.com/)** - The Intuitive Vue Framework
+- **[UnoCSS](https://unocss.dev/)** - Instant On-demand Atomic CSS Engine
+- **[Drizzle ORM](https://orm.drizzle.team/)** - TypeScript ORM with powerful migrations
+- **[ESlint](https://eslint.org/)** - The pluggable linting utility
+- **[Pinia](https://pinia.vuejs.org/)** - Intuitive state management
+- **[Docker](https://www.docker.com/)** - Containerization support
 
+## 📄 License
+
+[MIT License](./LICENSE)
