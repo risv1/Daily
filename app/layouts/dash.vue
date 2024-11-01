@@ -1,6 +1,6 @@
 <template>
     <main
-        class="h-screen overflow-hidden bg-[url('/images/dazai_bg_gray.svg')] dark:bg-[url('/images/dazai_bg_black.svg')] bg-center p-6">
+        class="h-screen overflow-hidden bg-gray-200 dark:bg-black p-6">
         <div class="fixed right-5 top-5 z-10">
             <MiscTheme />
         </div>

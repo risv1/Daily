@@ -45,7 +45,7 @@ const navigateToWorkout = () => {
 <template>
     <main class="flex flex-col gap-3 w-full h-full">
         <div
-            class="bg-white/70 dark:bg-black/70 backdrop-blur-md rounded-xl p-6 shadow-lg hover:scale-[1.02] transition-transform duration-300">
+            class="bg-white/70 dark:bg-neutral-950 backdrop-blur-md rounded-xl p-6 shadow-lg hover:scale-[1.02] transition-transform duration-300">
             <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-2">{{ greeting }}, User</h1>
             <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300">
                 <Icon name="material-symbols:calendar-today" class="w-5 h-5" />
@@ -54,7 +54,7 @@ const navigateToWorkout = () => {
         </div>
 
         <div
-            class="bg-white/70 dark:bg-black/70 backdrop-blur-md rounded-xl p-6 shadow-lg hover:scale-[1.02] transition-transform duration-300">
+            class="bg-white/70 dark:bg-neutral-950 backdrop-blur-md rounded-xl p-6 shadow-lg hover:scale-[1.02] transition-transform duration-300">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center gap-3">
                     <div class="p-3 bg-cyan-500 rounded-lg">
@@ -67,7 +67,7 @@ const navigateToWorkout = () => {
             </div>
             <div class="space-y-3">
                 <div v-for="(task, index) in todayTasks" :key="index"
-                    class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/50 dark:hover:bg-black/50 transition-colors">
+                    class="flex items-center gap-3 p-2 rounded-lg hover:bg-white/50 dark:hover:bg-neutral-950/50 transition-colors">
                     <input type="checkbox" v-model="task.completed" class="rounded text-cyan-500 focus:ring-cyan-500">
                     <span
                         :class="{ 'line-through text-gray-400': task.completed, 'text-gray-700 dark:text-gray-300': !task.completed }">{{
@@ -77,7 +77,7 @@ const navigateToWorkout = () => {
         </div>
 
         <div @click="navigateToWorkout"
-            class="bg-white/70 dark:bg-black/70 backdrop-blur-md rounded-xl p-6 shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer group">
+            class="bg-white/70 dark:bg-neutral-950 backdrop-blur-md rounded-xl p-6 shadow-lg hover:scale-[1.02] transition-all duration-300 cursor-pointer group">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-3">
                     <div class="p-3 bg-cyan-500 rounded-lg group-hover:bg-cyan-600 transition-colors">
@@ -105,7 +105,7 @@ const navigateToWorkout = () => {
         </div>
 
         <div
-            class="bg-white/70 dark:bg-black/70 backdrop-blur-md rounded-xl p-6 shadow-lg hover:scale-[1.02] transition-transform duration-300">
+            class="bg-white/70 dark:bg-neutral-950 backdrop-blur-md rounded-xl p-6 shadow-lg hover:scale-[1.02] transition-transform duration-300">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center gap-3">
                     <div class="p-3 bg-cyan-500 rounded-lg">
@@ -117,7 +117,7 @@ const navigateToWorkout = () => {
             </div>
             <div class="space-y-2">
                 <div v-for="(news, index) in latestNews" :key="index"
-                    class="cursor-pointer hover:bg-white/50 dark:hover:bg-black/50 p-3 rounded-lg transition-colors">
+                    class="cursor-pointer hover:bg-white/50 dark:hover:bg-neutral-950/50 p-3 rounded-lg transition-colors">
                     <h3 class="font-medium text-gray-800 dark:text-white mb-1">{{ news.title }}</h3>
                     <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                         <Icon name="material-symbols:schedule" class="w-4 h-4" />
