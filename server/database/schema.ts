@@ -1,17 +1,14 @@
-import { sql } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { boolean, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
-export const users = sqliteTable("users", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
-  password: text("password").notNull(),
-  created_at: text("timestamp")
-    .notNull()
-    .default(sql`(current_timestamp)`),
-  updated_at: text("timestamp")
-    .notNull()
-    .default(sql`(current_timestamp)`),
-  deleted_at: text("timestamp"),
-  is_deleted: integer("is_deleted").notNull().default(0),
+  hashPassword: text("hash_password").notNull(),
+  created_at: timestamp("created_at").notNull().defaultNow(),
+  updated_at: timestamp("updated_at").notNull().defaultNow(),
+  deleted_at: timestamp("timestamp"),
+  is_deleted: boolean("is_deleted").default(false),
 });
+
+export type User = typeof users.$inferSelect
