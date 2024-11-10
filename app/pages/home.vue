@@ -1,7 +1,8 @@
 <script setup lang="ts">
 
 definePageMeta({
-  layout: 'dash'
+  layout: 'dash',
+  middleware: 'auth'
 })
 
 const currentHour = new Date().getHours();

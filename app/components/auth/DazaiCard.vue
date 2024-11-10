@@ -1,5 +1,5 @@
 <template>
-    <section class="flex card flex-col h-full p-10 rounded-2xl text-white dark:text-black">
+    <section class="fixed w-[54vh] h-[87vh] top-5 flex card flex-col p-10 rounded-2xl text-white dark:text-black mb-10">
         <div class="flex z-10 flex-row items-center">
             <h1 class="text-2xl text-black font-bold mb-2">Daily</h1>
             <span class="text-4xl font-bold text-cyan-500">.</span>
@@ -15,7 +15,6 @@
 <style scoped>
 .card {
     background: url('/images/dazai_login.jpg');
-    z-index: -1;
     background-size: cover;
     opacity: 0.3;
     background-position: center;

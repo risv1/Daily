@@ -51,7 +51,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="min-h-screen overflow-hidden dark:bg-black bg-gradient-to-br from-gray-100 to-gray-200 dark:from-black dark:to-gray-900">
+  <main class="min-h-screen overflow-hidden dark:bg-black bg-gradient-to-tr from-gray-100 to-gray-200 dark:from-black dark:from-50% dark:to-cyan-950">
     <div class="container mx-auto px-4 py-16">
       <div class="text-center mb-20">
         <h1 class="text-7xl font-bold mb-6 text-gray-800 dark:text-white tracking-tight animate-fade-in">
@@ -61,13 +61,13 @@ onMounted(() => {
           Your all-in-one personal management platform designed to streamline your daily life and boost productivity.
         </p>
         <button 
-          @click="navigateToHome"
           class="px-10 border-none py-4 bg-cyan-500 text-white rounded-full text-lg font-semibold 
                  hover:bg-cyan-600 dark:hover:bg-cyan-400 
                  shadow-lg hover:shadow-xl
                  transform hover:-translate-y-1
                  transition-all duration-200"
-        >
+          @click="navigateToHome"
+                 >
           Get Started
         </button>
       </div>
