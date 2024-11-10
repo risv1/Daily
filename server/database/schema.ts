@@ -11,4 +11,4 @@ export const users = pgTable("users", {
   is_deleted: boolean("is_deleted").default(false),
 });
 
-export type User = typeof users.$inferSelect
+export type User = typeof users.$inferSelect;

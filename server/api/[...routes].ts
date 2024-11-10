@@ -4,13 +4,19 @@ import { healthCheck } from "./handlers/misc.handlers";
 
 const router = createRouter();
 
-router.get("/health", defineEventHandler(async(_event)=>healthCheck))
+router.get(
+  "/health",
+  defineEventHandler(async (_event) => healthCheck),
+);
 
-router.use("/auth/**", useBase("/auth", authRouterHandler))
+router.use("/auth/**", useBase("/auth", authRouterHandler));
 
-router.use("/**", defineEventHandler((event) => {
-    setResponseStatus(event, 404)
-    return { error: "Endpoint not found" }
-}))
+router.use(
+  "/**",
+  defineEventHandler((event) => {
+    setResponseStatus(event, 404);
+    return { error: "Endpoint not found" };
+  }),
+);
 
-export default useBase("/api", router.handler)
+export default useBase("/api", router.handler);
